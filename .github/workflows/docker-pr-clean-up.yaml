@@ -1,4 +1,6 @@
 name: 'Docker PR Clean Up'
+permissions:
+  packages: write
 
 on:
   pull_request:

@@ -1,4 +1,5 @@
 name: Create Releases From Branches
+permissions: write-all
 
 on:
   push:
