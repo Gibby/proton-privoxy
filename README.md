@@ -3,11 +3,6 @@
 Docker container for setting up a [Privoxy](https://www.privoxy.org/) proxy that pushes traffic over a
 [ProtonVPN](https://protonvpn.com/) connection.
 
-Build Docker image:
-```
-docker build -t walt3rl/proton-privoxy .
-```
-
 Run Docker container:
 
 ```
@@ -17,7 +12,7 @@ docker run -d \
      -p 8888:8080 \
      -e PVPN_USERNAME=my_protonvpn_openvpn_username \
      -e PVPN_PASSWORD=my_protonvpn_openvpn_password \
-     --name proton-privoxy walt3rl/proton-privoxy
+     --name proton-privoxy ghcr.io/gibby/proton-privoxy
 ```
 
 Or with this `docker-compose.yml`:
@@ -27,7 +22,7 @@ Or with this `docker-compose.yml`:
 version: "3"
 services:
   proton-privoxy:
-    image: walt3rl/proton-privoxy
+    image: ghcr.io/gibby/proton-privoxy
     container_name: proton-privoxy
     environment:
       - PVPN_USERNAME=xxxxxxxxxxxxxxxxxxxxxxxx
