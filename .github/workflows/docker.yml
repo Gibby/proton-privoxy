@@ -97,3 +97,15 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta-dockerhub.outputs.tags }}
           labels: ${{ steps.meta-dockerhub.outputs.labels }}
+      -
+        name: push README to Dockerhub
+        uses: christian-korneck/update-container-description-action@v1
+        if: github.event_name != 'pull_request'
+        env:
+          DOCKER_USER: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKER_PASS: ${{ secrets.DOCKERHUB_TOKEN }}
+        with:
+          destination_container_repo: ${{ secrets.DOCKERHUB_USERNAME }}/${{ github.event.repository.name }}
+          provider: dockerhub
+          short_description: 'Docker container for setting up a Privoxy proxy that pushes traffic over a ProtonVPN connection.'
+          readme_file: 'README.md'
